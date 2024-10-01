@@ -13,24 +13,41 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <wireui:scripts />
+        @filamentStyles
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             <livewire:layout.navigation />
+            <livewire:notifications />
 
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
             @endif
+            {{-- @if (isset($header))
+                <div class="flex flex-col gap-4 mb-6 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-3xl">{{ $header }}</h1>
+                    </div>
+                    <div>
+                        @if (isset($action))
+                            {{ $action }}
+                        @endif
+                    </div>
+                </div>
+            @endif --}}
 
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
         </div>
+
+        @filamentScripts
     </body>
 </html>
